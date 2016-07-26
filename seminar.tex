@@ -6,8 +6,8 @@
 \usepackage{graphicx}
 
 % figure refs with section number
-\usepackage{chngcntr}
-\counterwithin{figure}{section}
+%\usepackage{chngcntr}
+%\counterwithin{figure}{section}
 
 % deutsche Silbentrennung
 %\usepackage[ngerman]{babel}
@@ -37,11 +37,13 @@
 %\fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
 
 % Packet für Seitenrandabständex und Einstellung für Seitenränder
-\usepackage{geometry}
-\geometry{left=3.5cm, right=2cm, top=2.5cm, bottom=2cm}
+%\usepackage{geometry}
+%\geometry{left=3.5cm, right=2cm, top=2.5cm, bottom=2cm}
 
 % Paket für Boxen im Text
 \usepackage{fancybox}
+
+\usepackage{lipsum}
 
 
 % bricht lange URLs "schoen" um
@@ -86,7 +88,7 @@
 \usepackage{setspace}
 
 % für Bildbezeichner
-\usepackage{capt-of}
+%\usepackage{capt-of}
 
 % für Stichwortverzeichnis
 \usepackage{makeidx}
@@ -275,6 +277,11 @@ Email: wittka@stud.uni-heidelberg.de}
 
 % einzelne Kapitel
 \input{1_introduction}
+\input{2_general_rf}
+
+\bibliographystyle{IEEEtran}
+\bibliography{seminar}
+
 
 %\include{2_uvm}
 

@@ -2,6 +2,10 @@
 *.nlo
 *.gz
 *.pdf
+*.aux
+*.bbl
+*.blg
+*.log
 .project
 .texlipse
 tmp/
