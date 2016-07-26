@@ -1,0 +1,322 @@
+%%This is a very basic article template.
+%%There is just one section and two subsections.
+\documentclass[a4paper,12pt,technote]{IEEEtran}
+% weitere Pakete
+% Grafiken aus PNG Dateien einbinden
+\usepackage{graphicx}
+
+% figure refs with section number
+\usepackage{chngcntr}
+\counterwithin{figure}{section}
+
+% deutsche Silbentrennung
+%\usepackage[ngerman]{babel}
+
+% Eurozeichen einbinden
+\usepackage[right]{eurosym}
+
+% Umlaute unter UTF8 nutzen
+\usepackage[utf8]{inputenc}
+
+% Zeichenencoding
+\usepackage[T1]{fontenc}
+
+\usepackage{lmodern}
+\usepackage{fix-cm}
+
+% floatende Bilder ermöglichen
+%\usepackage{floatflt}
+
+%todos can be marked
+\usepackage{todonotes}
+% mehrseitige Tabellen ermöglichen
+\usepackage{longtable}
+
+% Unterstützung für Schriftarten
+%\newcommand{\changefont}[3]{ 
+%\fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
+
+% Packet für Seitenrandabständex und Einstellung für Seitenränder
+\usepackage{geometry}
+\geometry{left=3.5cm, right=2cm, top=2.5cm, bottom=2cm}
+
+% Paket für Boxen im Text
+\usepackage{fancybox}
+
+
+% bricht lange URLs "schoen" um
+\usepackage[hyphens,obeyspaces,spaces]{url}
+
+% Paket für Textfarben
+\usepackage{color}
+
+% Mathematische Symbole importieren
+\usepackage{amssymb}
+
+% auf jeder Seite eine Überschrift (alt, zentriert)
+%\pagestyle{headings}
+
+% erzeugt Inhaltsverzeichnis mit Querverweisen zu den Kapiteln (PDF Version)
+%\usepackage[bookmarksnumbered,pdftitle={\titleDocument},hyperfootnotes=false,hidelinks]{hyperref}
+%\usepackage[bookmarksnumbered,pdftitle={\titleDocument},hyperfootnotes=false]{hyperref}
+%\hypersetup{colorlinks, citecolor=red, linkcolor=blue, urlcolor=black}
+%\hypersetup{colorlinks, citecolor=black, linkcolor= black, urlcolor=black}
+
+% neue Kopfzeilen mit fancypaket
+\usepackage{fancyhdr} %Paket laden
+\pagestyle{fancy} %eigener Seitenstil
+\fancyhf{} %alle Kopf- und Fußzeilenfelder bereinigen
+\fancyhead[L]{\nouppercase{\leftmark}} %Kopfzeile links
+\fancyhead[C]{} %zentrierte Kopfzeile
+\fancyhead[R]{\thepage} %Kopfzeile rechts
+\renewcommand{\headrulewidth}{0.4pt} %obere Trennlinie
+%\fancyfoot[C]{\thepage} %Seitennummer
+%\renewcommand{\footrulewidth}{0.4pt} %untere Trennlinie
+
+% für Tabellen
+\usepackage{array}
+
+% Runde Klammern für Zitate
+%\usepackage[numbers,round]{natbib}
+
+% Schaltet den zusätzlichen Zwischenraum ab, den LaTeX normalerweise nach einem Satzzeichen einfügt.
+%\frenchspacing
+
+% Paket für Zeilenabstand
+\usepackage{setspace}
+
+% für Bildbezeichner
+\usepackage{capt-of}
+
+% für Stichwortverzeichnis
+\usepackage{makeidx}
+
+% für Listings
+\usepackage{listings}
+%\lstset{
+%  numbers=left,
+%  numberstyle=\tiny,
+%  numbersep=5pt,
+%  breaklines=true,
+%  breakatwhitespace,
+%  keywordstyle=\color{black}\bfseries,
+%  stringstyle=\sffamily,
+%  showstringspaces=false,
+%  basicstyle=\ttfamily\lst@ifdisplaystyle\footnotesize\else\normalsize\fi,
+%  captionpos=b}
+%\renewcommand{\lstlistingname}{Example}
+%\AtBeginDocument{
+%%\counterwithin{lstlisting}{section}
+%}
+%\setlength{\emergencystretch}{2pt}
+% Indexerstellung
+%\makeindex
+
+% Abkürzungsverzeichnis
+%\usepackage{nomencl}
+%\let\abbrev\nomenclature
+
+% Abkürzungsverzeichnis LiveTex Version
+%\renewcommand{\nomname}{List of Abbreviations}
+%\setlength{\nomlabelwidth}{.25\hsize}
+%\renewcommand{\nomlabel}[1]{#1 \dotfill}
+%\setlength{\nomitemsep}{-\parsep}
+%\makenomenclature
+%\makeglossary
+
+% Abkürzungsverzeichnis TeTEX Version
+% \usepackage[german]{nomencl}
+% \makenomenclature
+% %\makeglossary
+% \renewcommand{\nomname}{Abkürzungsverzeichnis}
+% \setlength{\nomlabelwidth}{.25\hsize}
+% \renewcommand{\nomlabel}[1]{#1 \dotfill}
+% \setlength{\nomitemsep}{-\parsep}
+
+% Disable single lines at the start of a paragraph
+%\clubpenalty = 10000
+% Disable single lines at the end of a paragraph
+%\widowpenalty = 10000
+%\displaywidowpenalty = 10000
+
+%\usepackage{titlesec}
+%\subparagraph starting new line after heading
+%\titleformat{\subparagraph}
+%    {\normalfont\normalsize\bfseries}{\thesubparagraph}{1em}{}
+%\titlespacing*{\subparagraph}{\parindent}{3.25ex plus 1ex minus .2ex}{.75ex plus .1ex}
+
+% create additional subsection layer
+%\makeatletter
+%\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}
+%	{-2.5ex\@plus -1ex \@minus -.25ex}
+%	{1.25ex \@plus .25ex}
+%	{\normalfont\normalsize\bfseries}}
+%\makeatother
+%\setcounter{secnumdepth}{4}
+%\setcounter{tocdepth}{4}
+
+\begin{document}
+% hier werden die Trennvorschläge inkludiert
+%\input{latex_einstellungen/trennung}
+
+%syntax highlighting for additional languages
+%\input{latex_einstellungen/systemverilog_code}
+%\input{latex_einstellungen/e_code}
+
+%Schriftart Helvetica
+%\changefont{phv}{m}{n}
+
+% Leere Seite am Anfang
+%\newpage
+%\thispagestyle{empty} % erzeugt Seite ohne Kopf- / Fusszeile
+%\section*{ }
+
+%use roman page numbers starting on this page
+%\pagenumbering{roman}
+
+% Titelseite %
+%\include{latex_einstellungen/deckblatt}
+
+% römische Numerierung
+%\pagenumbering{arabic}
+
+% 1.5 facher Zeilenabstand
+%\onehalfspacing
+
+% Sperrvermerk
+%\input{sperrvermerk}
+\title{Control and Status Register Files}
+\author{Sebastian Wittka\\
+Institute for Computer Engineering (ZITI) - Heidelberg University\\
+Email: wittka@stud.uni-heidelberg.de}
+\twocolumn[
+\begin{@twocolumnfalse}
+\maketitle
+\end{@twocolumnfalse}]
+
+% Einleitung / Abstract
+\input{abstract}
+
+% einfacher Zeilenabstand
+%\singlespacing
+
+% Eidesstattliche Erklärung
+%\addcontentsline{toc}{section}{Declaration of Authorship}
+%\include{erklaerung}
+
+% Inhaltsverzeichnis anzeigen
+%\newpage
+%\tableofcontents
+%\fancyhead[L]{}
+% das Abbildungsverzeichnis
+%\newpage
+% Abbildungsverzeichnis soll im Inhaltsverzeichnis auftauchen
+%\addcontentsline{toc}{section}{List of Figures}
+% Abbildungsverzeichnis endgueltig anzeigen
+%\listoffigures
+
+% das Tabellenverzeichnis
+%\newpage
+% Abbildungsverzeichnis soll im Inhaltsverzeichnis auftauchen
+%\addcontentsline{toc}{section}{Tabellenverzeichnis}
+% \fancyhead[L]{Abbildungsverzeichnis / Abkürzungsverzeichnis} %Kopfzeile links
+% Abbildungsverzeichnis endgueltig anzeigen
+%\listoftables
+
+%% WORKAROUND für Listings
+%\makeatletter% --> De-TeX-FAQ
+%\renewcommand*{\lstlistoflistings}{%
+%  \begingroup
+%    \if@twocolumn
+%      \@restonecoltrue\onecolumn
+%    \else
+%      \@restonecolfalse
+%    \fi
+%    \lol@heading
+%    \setlength{\parskip}{\z@}%
+%    \setlength{\parindent}{\z@}%
+%    \setlength{\parfillskip}{\z@ \@plus 1fil}%
+%    \@starttoc{lol}%
+%    \if@restonecol\twocolumn\fi
+%  \endgroup
+%}
+%\makeatother% --> \makeatletter
+% das Listingverzeichnis
+%\newpage
+% Listingverzeichnis soll im Inhaltsverzeichnis auftauchen
+%\addcontentsline{toc}{section}{List of Examples}
+%\fancyhead[L]{Abbildungs- / Tabellen- / Listingverzeichnis} %Kopfzeile links
+%\renewcommand{\lstlistlistingname}{List of Examples}
+%\lstlistoflistings
+%%%%
+
+% das Abkürzungsverzeichnis
+%\newpage
+% Abkürzungsverzeichnis soll im Inhaltsverzeichnis auftauchen
+%\addcontentsline{toc}{section}{List of Abbreviations}
+% das Abkürzungsverzeichnis entgültige Ausgeben
+%\fancyhead[L]{Abkürzungsverzeichnis} %Kopfzeile links
+%\input{latex_einstellungen/abkuezungen/abkuerzungen}
+%\printnomenclature
+
+% Definiert Stegbreite bei zweispaltigem Layout
+%\setlength{\columnsep}{25pt}
+
+%%%%%%% EINLEITUNG %%%%%%%%%%%%
+%\twocolumn
+%\newpage
+%\fancyhead[L]{\nouppercase{\leftmark}} %Kopfzeile links
+
+% 1,5 facher Zeilenabstand
+%\onehalfspacing
+
+%use arabic numbers starting with this page
+%\pagenumbering{arabic}
+
+% einzelne Kapitel
+\input{1_introduction}
+
+%\include{2_uvm}
+
+%\include{3_uvm_ml}
+
+%\include{4_conclusion}
+
+
+%\include{5_future_work}
+
+%\include{beispiel}
+
+%\onecolumn
+% einfacher Zeilenabstand
+%\singlespacing
+% Literaturliste soll im Inhaltsverzeichnis auftauchen
+%\addcontentsline{toc}{section}{References}
+%\newpage
+
+% Literaturverzeichnis anzeigen
+%\renewcommand\refname{References}
+%\bibliographystyle{plain}
+%\bibliography{Seminar}
+%% Index soll Stichwortverzeichnis heissen
+% \newpage
+% % Stichwortverzeichnis soll im Inhaltsverzeichnis auftauchen
+% \addcontentsline{toc}{section}{Stichwortverzeichnis}
+% \renewcommand{\indexname}{Stichwortverzeichnis}
+% % Stichwortverzeichnis endgueltig anzeigen
+% \printindex
+
+%\onehalfspacing
+% evtl. Anhang
+%\newpage
+%\addcontentsline{toc}{section}{Anhang}
+%\fancyhead[L]{Anhang} %Kopfzeile links
+%\input{anhang/anhang}
+
+% leere Abschlussseite
+%\newpage
+%\thispagestyle{empty} % erzeugt Seite ohne Kopf- / Fusszeile
+%\section*{ }
+
+
+\end{document}
