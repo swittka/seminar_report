@@ -1,6 +1,7 @@
 *.idx
 *.nlo
 *.gz
+*.pdf
 .project
 .texlipse
 tmp/
