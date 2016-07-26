@@ -1,0 +1,6 @@
+*.idx
+*.nlo
+*.gz
+.project
+.texlipse
+tmp/
