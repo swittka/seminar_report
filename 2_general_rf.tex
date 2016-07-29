@@ -8,7 +8,7 @@ For this purpose registers are used, which are called Control and Status Registe
 \label{fig::csr}
 \end{figure}
 
-In general register files (RFs) consist of multiple CSRs. They appear as a linear address space (fig.~\ref{fig::rf}) and are often mapped into the address space of the host system. This simplifies the read and write accesses by the software.
+In general, register files (RFs) consist of multiple CSRs. They appear as a linear address space (fig.~\ref{fig::rf}) and are often mapped into the address space of the host system. This simplifies the read and write accesses by the software. However, this limits the number of accesses, because only a single read or write can be performed at the same time. On the contrary, the hardware logic can access all registers respectively fields at the same time due to its direct connections.
 \begin{figure}[h]
  \centering
  \includegraphics[width=130pt]{images/rf.png}
