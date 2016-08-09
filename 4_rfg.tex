@@ -1,2 +1,9 @@
 \section{CAG Register File Generator}
 To resolve the problems with commercial tools for RFs the Computer Architecture Group (CAG) of the Heidelberg University is developing its own tool called Register File Generator (RFG). It is an open source project and publicly available at \emph{github.com/unihd-cag/odfi-rfg}.
+\subsection{Registers}
+In addition to the basic CSRs, more specialized registers can be created. This is achieved by assigning flags to the register in the RF description called attributes. For example, instead of a register a counter can be added to the RF by using the corresponding flag.
+\subsection{Ramblocks}
+The RFG also supports memory type registers in static random-access memories (SRAMs) called ramblocks. These are used when the same kind of register is required multiple times with consecutive addresses. It is important to mention, that in this case the hardware is not directly connected to the fields. Instead the logic can only use an SRAM interface to read or write an entire entry of the memory, which is similar to accessing a complete register.\\
+Similar to registers, read and write permissions can be specified for ramblocks. Additionally each ramblock can either be internal or external. Internal ones are instantiated within the RF. Whereas an external ramblock only includes an SRAM interface in the RF and the developer has to connect it.
+\subsection{Hierarchical RFs}
+Furthermore hierarchical RFs are available, which split the RF in multipe sub-RFs. On the one hand this can resolve timing problems in large designs (see section~\ref{rf_generation}), on the other hand the RF obtains a clear structure and is therefore better to maintain than a non-hierarchical one.

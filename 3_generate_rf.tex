@@ -1,4 +1,4 @@
-\section{Register File Generation}
+\section{Register File Generation}\label{rf_generation}
 RFs of modern hardware designs can easily contain several hundreds of CSRs. When an additional register is inserted during the design process, the entire address map of the RF has to be updated. Not only this has to be done in the hardware description, but also in all other parts involved in the design process like specification, documentation, and verification and simulation environment. This is both time-consuming and error prone. Therefore, it makes sence to have a single file containing the RF description with a high abstraction level. This file is then used to automatically generate all other required views.\\
 
 Such RF descriptions can be drawn up using description languages like \emph{SystemRDL} or \emph{Spirit IP-XACT}, which are used in commercial RF generators. Where \emph{SystemRDL} is a language specific for RFs \cite{system_rdl} whereas \emph{Spirit IP-XACT} is not only able to describe RFs, but also the connections between hardware modules \cite{ip_xact}.\\
