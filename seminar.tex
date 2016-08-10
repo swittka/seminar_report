@@ -157,6 +157,33 @@
 %\setcounter{secnumdepth}{4}
 %\setcounter{tocdepth}{4}
 
+\usepackage{etoolbox}
+\lstset{showlines=true}
+
+\makeatletter
+\AtBeginEnvironment{lstlisting}{%
+\long\def\@makecaption#1#2{%
+% test if is a for a figure or table
+\ifx\@captype\@IEEEtablestring%
+% if a table, do table caption
+\footnotesize\bgroup\par\centering\@IEEEtabletopskipstrut{\normalfont\footnotesize #1}\\{\normalfont\footnotesize\scshape #2}\par\addvspace{0.5\baselineskip}\egroup%
+\@IEEEtablecaptionsepspace
+% if not a table, format it as a figure
+\else
+\@IEEEfigurecaptionsepspace
+% 3/2001 use footnotesize, not small; use two nonbreaking spaces, not one
+\setbox\@tempboxa\hbox{\normalfont\footnotesize {#1.}\nobreakspace\nobreakspace #2}%
+\ifdim \wd\@tempboxa >\hsize%
+% if caption is longer than a line, let it wrap around
+\setbox\@tempboxa\hbox{\normalfont\footnotesize {#1.}\nobreakspace\nobreakspace}%
+\parbox[b]{\hsize}{\normalfont\footnotesize\noindent\unhbox\@tempboxa#2}\medskip%
+% if caption is shorter than a line, center if conference, left justify otherwise
+\else%
+\ifCLASSOPTIONconference \hbox to\hsize{\normalfont\footnotesize\hfil\box\@tempboxa\hfil}%
+\else \hbox to\hsize{\normalfont\footnotesize\box\@tempboxa\hfil}\medskip%
+\fi\fi\fi}}
+\makeatother
+
 \begin{document}
 % hier werden die Trennvorschläge inkludiert
 %\input{latex_einstellungen/trennung}
