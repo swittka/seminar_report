@@ -73,4 +73,4 @@ In addition to the basic CSRs, more specialized registers can be created with th
 The RFG also supports memory type registers in static random-access memories (SRAMs) called ramblocks. These are used when the same kind of register is required multiple times with consecutive addresses. It is important to mention, that in this case the hardware is not directly connected to the fields. Instead the logic can only use an SRAM interface to read or write an entire entry of the memory, which is similar to accessing a complete register.\\
 Analogous to the fields of registers, read and write permissions for software and hardware view can be specified for ramblocks. Additionally each ramblock can either be internal (default value) or external. Internal ones are instantiated within the RF, whereas an external ramblock only includes an SRAM interface inside of the RF and the developer has to connect it.
 \subsection{Verification Model}
-Following, the verification model will be presented as an example for a generator contained in the RFG.
+Following, the verification model will be presented, as an example for a generator contained in the RFG.
