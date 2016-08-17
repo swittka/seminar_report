@@ -1,7 +1,8 @@
 \section{CAG Register File Generator}
+\todo[inline]{addresses}
 To resolve the problems connected with commercial tools for RFs the Computer Architecture Group (CAG) of the Heidelberg University is developing its own tool called Register File Generator (RFG). It is an open source project and publicly available at \emph{github.com/unihd-cag/odfi-rfg}.
 
-\subsection{RFG Terminology}
+\subsection{RFG Terminology}\label{section::rfg_term}
 
 The RFG uses two interfaces to access the generated RF (fig.~\ref{fig::rfg_view}). On one side a bus, which enables access to the RF from outside the hardware and is called software view. Its signals shared between the registers of the RF and a specific CSR is accessed via its address. Thereby different read or write commands targeting the RF can only be executed sequentially.\\
 On the contrary the logic of the hardware is directly connected to each of its corresponding registers (except memory based registers as descriped in section~\ref{section::ramblocks}). Therefore the interface of the hardware view does not represent an uniform set of signals, but rather an aggregation of point-to-point connections, which depends on the registers of the RF.
@@ -28,6 +29,7 @@ A write access (fig.~\ref{fig::sw_write}) is performed by applying the address o
 \label{fig::sw_write}
 \end{figure}
 
+\subsection{RF Components}
 An example of a RF description for the RFG is given in listing~\ref{lst::example_rf}.
 
 \lstset{language={}, numbers=none, escapechar=|}
@@ -61,7 +63,7 @@ registerFile rf_top {
   external rf_inner.rf example
 }
 \end{lstlisting}
-\subsection{RF Components}
+
 \subsubsection{Register Files}
 A RF is the top module containing all other components like registers and ramblocks. It is declared using \lstinline$registerFile$ followed by its name.
 Furthermore hierarchical RFs are available, which split the RF in multipe sub-RFs. On the one hand this can resolve timing problems in large designs (see section~\ref{rf_generation}), on the other hand the RF obtains a clear structure and is therefore better to maintain than a non-hierarchical one.\\
@@ -73,4 +75,13 @@ In addition to the basic CSRs, more specialized registers can be created with th
 The RFG also supports memory type registers in static random-access memories (SRAMs) called ramblocks. These are used when the same kind of register is required multiple times with consecutive addresses. It is important to mention, that in this case the hardware is not directly connected to the fields. Instead the logic can only use an SRAM interface to read or write an entire entry of the memory, which is similar to accessing a complete register.\\
 Analogous to the fields of registers, read and write permissions for software and hardware view can be specified for ramblocks. Additionally each ramblock can either be internal (default value) or external. Internal ones are instantiated within the RF, whereas an external ramblock only includes an SRAM interface inside of the RF and the developer has to connect it.
 \subsection{Verification Model}
-Following, the verification model will be presented, as an example for a generator contained in the RFG.
+The RFG contains multiple generators. Each creating a different part of the RF. Among these are generators for hardware description, documentation as well as a verification model. Following, the verification model will be presented, as an example for such a generator.\\
+When verifying a design, tests have to be created, which generate the stimulus signals for the device under test (DUT). This has to be done manually, because it depends on the logic connected to the RF and cannot be done in a general manner for different RFs. In case of the software interface of the RF this means creating sets of read and write accesses for the distinct registers. As mentioned in section~\ref{section::rfg_term}, CSRs are accessed via the software bus of the RF using the address of the register. However, the RF description is independent of these addresses. They are not determined until the register file generation is invoked. This has the advantage, that additional registers can be easily added to an existing RF without adjusting the descriptions of the other CSRs. Due to such extentions of the RF during the design process, the address mapping of the RF can change multiple times. This leads to the need of constantly adjusting the tests of the verification environment according to the changes in the address map of the RF.\\
+This is contrary to the purpose of a register file generator to eliminate such time consuming and error prone tasks. Therefore it seems natural to create tests for the software interface, which are independent of addresses.
+
+\begin{figure}[h]
+ \centering
+ \includegraphics[width=252pt]{images/hierarchy_rf.png}
+ \caption{Relative Addresses of the RF Verification Model}
+\label{fig::rel_address}
+\end{figure}

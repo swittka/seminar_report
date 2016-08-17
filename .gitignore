@@ -6,6 +6,7 @@
 *.bbl
 *.blg
 *.log
+*.tdo
 .project
 .texlipse
 tmp/
